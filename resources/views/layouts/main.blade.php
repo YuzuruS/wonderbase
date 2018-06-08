@@ -54,10 +54,13 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        {!! link_to('users/profile/'.Auth::user()->id, 'マイプロフィール') !!}
+                                    </li>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            ログアウトする
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
