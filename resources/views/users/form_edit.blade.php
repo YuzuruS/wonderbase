@@ -38,6 +38,7 @@
 
 <div class="form-group">
     <div class="center-block">
+        {!! Form::hidden('id', $authUser->id, ['class' => 'form-control']) !!}
         {!! Form::submit('変更を保存', ['class' => 'btn btn-primary']) !!}
     </div>
 </div>

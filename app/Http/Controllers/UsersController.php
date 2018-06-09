@@ -24,14 +24,22 @@ class UsersController extends Controller
 
     public function editComplete(Request $request)
     {
-        $user = User::find(Auth::user()->id);
-        $user->name = $request->name;
-        $user->self_introduction = $request->self_introduction;
-        $user->gender = $request->gender;
-        $user->livein = $request->livein;
-        $user->birthday = $request->birthday;
+        $this->validate($request,
+            [
+                'name' => 'required|min:1|max:50',
+                'self_introduction' => 'min:30|max:1000',
+            ]);
 
-        $user->save();
-        return redirect('users/profile/'.Auth::user()->id);
+        if($request->id == Auth::user()->id) {
+            $user = User::find($request->id);
+            $user->name = $request->name;
+            $user->self_introduction = $request->self_introduction;
+            $user->gender = $request->gender;
+            $user->livein = $request->livein;
+            $user->birthday = $request->birthday;
+
+            $user->save();
+            return redirect('users/profile/'.Auth::user()->id);
+        }
     }
 }
