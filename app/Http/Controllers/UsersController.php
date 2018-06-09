@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -11,5 +12,26 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         return view('users.profile', compact('user'));
+    }
+
+    public function edit()
+    {
+        $authUser = Auth::user();
+        $prefectures = \App\Prefecture::orderBy('code','asc')->pluck('name', 'code');
+        $prefectures = $prefectures -> prepend('選択してください', '');
+        return view('users.edit', compact('authUser', 'prefectures'));
+    }
+
+    public function editComplete(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $user->name = $request->name;
+        $user->self_introduction = $request->self_introduction;
+        $user->gender = $request->gender;
+        $user->livein = $request->livein;
+        $user->birthday = $request->birthday;
+
+        $user->save();
+        return redirect('users/profile/'.Auth::user()->id);
     }
 }
