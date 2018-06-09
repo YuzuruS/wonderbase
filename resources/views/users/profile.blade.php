@@ -27,7 +27,7 @@
                     @endisset
                     @isset($user->livein)
                         <h4>居住地</h4>
-                        <p>{{$user->livein}}</p>
+                        <p>{{$userPrefecture->name}}</p>
                     @endisset
                     @isset($user->birthday)
                         <h4>生年月日</h4>

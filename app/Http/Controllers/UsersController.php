@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+
 use Auth;
+use App\User;
+use App\Prefecture;
 
 class UsersController extends Controller
 {
     public function profile($id)
     {
         $user = User::find($id);
-        return view('users.profile', compact('user'));
+        $userPrefecture = Prefecture::where('code', $user->livein)->first();
+        return view('users.profile', compact('user', 'userPrefecture'));
     }
 
     public function edit()
