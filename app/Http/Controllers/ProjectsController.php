@@ -10,4 +10,14 @@ class ProjectsController extends Controller
     {
         return view('projects.index');
     }
+
+    public function gettingStarted()
+    {
+        return view('projects.getting_started');
+    }
+
+    public function add()
+    {
+        
+    }
 }

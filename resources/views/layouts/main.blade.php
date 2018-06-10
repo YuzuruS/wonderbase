@@ -38,7 +38,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li>
-                        {!! link_to('users/profile/', 'プロジェクトを始める') !!}
+                        {!! link_to('/projects/gettingstarted', 'プロジェクトを始める') !!}
                     </li>
                     <li>
                         {!! link_to('#', 'プロジェクトを探す') !!}
