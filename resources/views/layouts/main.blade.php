@@ -37,7 +37,15 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    &nbsp;
+                    <li>
+                        {!! link_to('users/profile/', 'プロジェクトを始める') !!}
+                    </li>
+                    <li>
+                        {!! link_to('#', 'プロジェクトを探す') !!}
+                    </li>
+                    <li>
+                        {!! link_to('#', 'Wonderbaseとは？') !!}
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

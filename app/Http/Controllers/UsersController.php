@@ -30,7 +30,7 @@ class UsersController extends Controller
         $this->validate($request,
             [
                 'name' => 'required|min:1|max:50',
-                'self_introduction' => 'min:30|max:1000',
+                'self_introduction' => 'min:1|max:1000',
             ]);
 
         if($request->id == Auth::user()->id) {
