@@ -30,7 +30,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Wonderbase
+                    <img src="{{ asset('images/logo/logo.png') }}" class="service-logo" alt="service-logo">
                 </a>
             </div>
 
