@@ -45,4 +45,41 @@ class UsersController extends Controller
             return redirect('users/profile/'.Auth::user()->id);
         }
     }
+
+    public function userInformation()
+    {
+        if(Auth::check()) {
+            $authUser = User::find(Auth::user()->id);
+            return view('users.user_information')->with('authUser', $authUser);
+        }
+    }
+
+    public function userInformationComplete(Request $request)
+    {
+        $this->validate($request,
+            [
+                'user_type' => 'required',
+                'last_name' => 'required',
+                'first_name' => 'required',
+                'last_name_kana' => 'required',
+                'first_name_kana' => 'required',
+                'address' => 'required',
+                'birthday' => 'required',
+                'gender' => 'required',
+            ]);
+
+        if($request->id == Auth::user()->id) {
+            $userInformation = User::find($request->id);
+            $userInformation->user_type = $request->user_type;
+            $userInformation->last_name = $request->last_name;
+            $userInformation->first_name = $request->first_name;
+            $userInformation->last_name_kana = $request->last_name_kana;
+            $userInformation->first_name_kana = $request->first_name_kana;
+            $userInformation->address = $request->address;
+            $userInformation->birthday = $request->birthday;
+            $userInformation->gender = $request->gender;
+            $userInformation->save();
+            return redirect('/');
+        }
+    }
 }
