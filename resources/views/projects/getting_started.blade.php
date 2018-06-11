@@ -7,7 +7,7 @@
                 <div class="text-center">
                     <h1 style="color: #d62728; font-size: 96px;">Wonderbase</h1>
                     <h4>あなたのプロジェクトをサポートしてくれる仲間を募集しよう。</h4>
-                    <a href="/projects/add"><button class="btn btn-primary"><h5>プロジェクトを掲載する</h5></button>
+                        {!! link_to('/projects/form', 'プロジェクトを掲載', ['class' => 'btn btn-primary']) !!}
                     </a>
                 </div>
             </div>
