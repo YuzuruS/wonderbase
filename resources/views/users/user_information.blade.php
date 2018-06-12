@@ -21,23 +21,23 @@
                     <div class="form-group">
                         <div class="center-block">
                             <h4>氏名</h4>
-                            {!! Form::text('last_name', $authUser->last_name, ['placeholder' => 'あ', 'class' => 'form-control']) !!}
-                            {!! Form::text('first_name', $authUser->first_name, ['placeholder' => '', 'class' => 'form-control']) !!}
+                            {!! Form::text('last_name', $authUser->last_name, ['placeholder' => '小貫', 'class' => 'form-control']) !!}
+                            {!! Form::text('first_name', $authUser->first_name, ['placeholder' => '将太', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="center-block">
                             <h4>ふりがな</h4>
-                            {!! Form::text('last_name_kana', $authUser->last_name_kana, ['class' => 'form-control']) !!}
-                            {!! Form::text('first_name_kana', $authUser->first_name_kana, ['class' => 'form-control']) !!}
+                            {!! Form::text('last_name_kana', $authUser->last_name_kana, ['placeholder' => 'おぬき', 'class' => 'form-control']) !!}
+                            {!! Form::text('first_name_kana', $authUser->first_name_kana, ['placeholder' => 'しょうた', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="center-block">
                             <h4>住所</h4>
-                            {!! Form::text('address', $authUser->address, ['class' => 'form-control']) !!}
+                            {!! Form::text('address', $authUser->address, ['placeholder' => '神奈川県横浜市鶴見区矢向6-1-12', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
