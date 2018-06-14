@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class ProjectsController extends Controller
 {
     public function index()
     {
-        return view('projects.index');
+        $projects = DB::table('projects')->limit(3)->orderBy('id', 'desc')->get();
+        return view('projects.index')->with('projects', $projects);
     }
 
     public function gettingStarted()

@@ -5,7 +5,9 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="text-center">
-                    <h1 style="color: #d62728; font-size: 96px;">Robal, Inc.</h1>
+                    @foreach($projects as $prj)
+                    <h3>{{$prj->title}}</h3>
+                    @endforeach
                 </div>
             </div>
         </div>
