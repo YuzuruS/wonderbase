@@ -22,6 +22,12 @@ class ProjectsController extends Controller
         return view('projects.getting_started');
     }
 
+    public function detail($id)
+    {
+        $project = Project::find($id);
+        return view('projects.detail')->with('project', $project);
+    }
+
     public function form()
     {
         if(Auth::check()) {

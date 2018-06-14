@@ -18,10 +18,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', ['as' => 'projects.index', 'uses' => 'ProjectsController@index']);
 Route::get('/projects/gettingstarted', ['as' => 'projects.gettingStarted', 'uses' => 'ProjectsController@gettingStarted']);
+Route::get('/projects/{id}', ['as' => 'projects.detail', 'uses' => 'ProjectsController@detail']);
 Route::get('/projects/form', ['as' => 'projects.form', 'uses' => 'ProjectsController@form']);
 Route::post('/projects/form/complete', 'ProjectsController@formComplete');
 
-Route::get('/users/profile/{body}', ['as' => 'users.profile', 'uses' => 'UsersController@profile']);
+Route::get('/users/profile/{id}', ['as' => 'users.profile', 'uses' => 'UsersController@profile']);
 Route::get('/users/edit', ['as' => 'users.edit', 'uses' => 'UsersController@edit']);
 Route::post('/users/edit/complete', ['as' => 'users.editComplete', 'uses' => 'UsersController@editComplete']);
 Route::get('/users/user_information', ['as' => 'users.user_information', 'uses' => 'UsersController@userInformation']);
