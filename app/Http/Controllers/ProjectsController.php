@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use App\User;
+use App\Project;
 
 class ProjectsController extends Controller
 {
@@ -33,12 +34,13 @@ class ProjectsController extends Controller
         }
     }
 
-    public function storeProject(Request $request)
+    public function formComplete(Request $request)
     {
         $this->validate($request,
             [
                 'title' => 'required|min:10',
-                'main_image' => 'required',
+                //main_imageは後ほど実装する
+                //'main_image' => 'required',
                 'summary' => 'required',
                 'category' => 'required',
                 'occupation' => 'required',
