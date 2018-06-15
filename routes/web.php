@@ -24,6 +24,6 @@ Route::get('/projects/{id}', ['as' => 'projects.detail', 'uses' => 'ProjectsCont
 
 Route::get('/users/edit', ['as' => 'users.edit', 'uses' => 'UsersController@edit']);
 Route::post('/users/edit/complete', ['as' => 'users.editComplete', 'uses' => 'UsersController@editComplete']);
-Route::patch('/users/user_information', ['as' => 'users.user_information', 'uses' => 'UsersController@userInformation']);
+Route::get('/users/user_information', ['as' => 'users.user_information', 'uses' => 'UsersController@userInformation']);
 Route::post('/users/user_information/complete', 'UsersController@userInformationComplete');
 Route::get('/users/profile/{id}', ['as' => 'users.profile', 'uses' => 'UsersController@profile']);
