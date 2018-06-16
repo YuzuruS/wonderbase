@@ -6,7 +6,11 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="text-center">
                     <h4>{{$project->title}}</h4>
-                    {!! link_to('/projects/entry/'.$project->id, 'エントリー', ['class' => 'btn btn-default']) !!}
+                    @empty($alreadyEntried[0])
+                        {!! link_to('/projects/entry/'.$project->id, 'エントリー', ['class' => 'btn btn-default']) !!}
+                    @else
+                        エントリーずみ
+                        @endempty
                 </div>
             </div>
         </div>
