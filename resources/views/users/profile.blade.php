@@ -33,6 +33,12 @@
                         <h4>生年月日</h4>
                         <p>{{$user->birthday}}</p>
                     @endisset
+
+                    {{--募集したプロジェクトを表示--}}
+                    @foreach($authProjects as $authProject)
+                        <p>{{$authProject->title}}</p>
+                    @endforeach
+
                 </section>
             </div>
 

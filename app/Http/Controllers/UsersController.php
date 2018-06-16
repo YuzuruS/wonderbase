@@ -3,18 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 use Auth;
 use App\User;
 use App\Prefecture;
+use App\Project;
 
 class UsersController extends Controller
 {
     public function profile($id)
     {
+
+        //募集したプロジェクト
+        $authProjects = DB::table('projects')->where('user_id', $id)->orderBy('id', 'desc')->get();
+        //応募したプロジェクトを取得
         $user = User::find($id);
         $userPrefecture = Prefecture::where('code', $user->livein)->first();
-        return view('users.profile', compact('user', 'userPrefecture'));
+        return view('users.profile', compact('user', 'userPrefecture', 'authProjects'));
     }
 
     public function edit()

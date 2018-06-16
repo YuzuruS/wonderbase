@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use DB;
+
 
 use Illuminate\Http\Request;
-
+use DB;
 use Auth;
 use App\User;
 use App\Project;
