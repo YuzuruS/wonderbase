@@ -35,9 +35,11 @@
                     @endisset
 
                     {{--募集したプロジェクトを表示--}}
-                    @foreach($authProjects as $authProject)
-                        <p>{{$authProject->title}}</p>
-                    @endforeach
+                        @isset($authProjects)
+                            @foreach($authProjects as $authProject)
+                                <p>{{$authProject->title}}</p>
+                            @endforeach
+                        @endisset
 
                 </section>
             </div>
