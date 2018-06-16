@@ -8,6 +8,7 @@ use DB;
 use Auth;
 use App\User;
 use App\Project;
+use App\Entry;
 
 class ProjectsController extends Controller
 {
@@ -64,6 +65,23 @@ class ProjectsController extends Controller
         $projects->description = $request->title;
         $projects->is_published = false;
         $projects->save();
+        return redirect('/');
+    }
+
+    public function entry($id)
+    {
+        $project = Project::find($id);
+        $user = Auth::user();
+        return view('projects.entry', compact('project', 'user'));
+    }
+
+    public function entryComplete(Request $request)
+    {
+        $entry = new Entry;
+        $entry->project_id = $request->id;
+        $entry->user_id = Auth::user()->id;
+        $entry->message = $request->message;
+        $entry->save();
         return redirect('/');
     }
 }

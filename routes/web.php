@@ -20,6 +20,8 @@ Route::get('/', ['as' => 'projects.index', 'uses' => 'ProjectsController@index']
 Route::get('/projects/gettingstarted', ['as' => 'projects.gettingStarted', 'uses' => 'ProjectsController@gettingStarted']);
 Route::get('/projects/form', ['as' => 'projects.form', 'uses' => 'ProjectsController@form']);
 Route::post('/projects/form/complete', 'ProjectsController@formComplete');
+Route::get('/projects/entry/{id}', ['as' => 'projects.entry', 'uses' => 'ProjectsController@entry']);
+Route::post('/projects/entry/complete', 'ProjectsController@entryComplete');
 Route::get('/projects/{id}', ['as' => 'projects.detail', 'uses' => 'ProjectsController@detail']);
 
 Route::get('/users/edit', ['as' => 'users.edit', 'uses' => 'UsersController@edit']);
