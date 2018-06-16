@@ -43,7 +43,6 @@ class UsersController extends Controller
             $user->name = $request->name;
             $user->self_introduction = $request->self_introduction;
             $user->gender = $request->gender;
-            $user->livein = $request->livein;
             $user->birthday = $request->birthday;
 
             $user->save();

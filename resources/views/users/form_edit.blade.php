@@ -24,13 +24,6 @@
 
 <div class="form-group">
     <div class="center-block">
-        <h4>居住地</h4>
-        {!! Form::select('livein', $prefectures, $authUser->livein, ['class' => 'form-control']) !!}
-    </div>
-</div>
-
-<div class="form-group">
-    <div class="center-block">
         <h4>生年月日</h4>
         {!! Form::date('birthday', $authUser->birthday, ['class' => 'form-control']) !!}
     </div>
