@@ -29,3 +29,5 @@ Route::post('/users/edit/complete', ['as' => 'users.editComplete', 'uses' => 'Us
 Route::get('/users/user_information', ['as' => 'users.user_information', 'uses' => 'UsersController@userInformation']);
 Route::post('/users/user_information/complete', 'UsersController@userInformationComplete');
 Route::get('/users/profile/{id}', ['as' => 'users.profile', 'uses' => 'UsersController@profile']);
+
+Route::get('/corporate', ['as' => 'corporates.index', 'uses' => 'CorporatesController@index']);
