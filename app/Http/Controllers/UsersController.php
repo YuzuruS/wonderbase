@@ -8,6 +8,7 @@ use Auth;
 use App\User;
 use App\Prefecture;
 use App\Project;
+use App\Entry;
 
 class UsersController extends Controller
 {
@@ -16,10 +17,18 @@ class UsersController extends Controller
 
         //募集したプロジェクト
         $authProjects = DB::table('projects')->where('user_id', $id)->orderBy('id', 'desc')->get();
-        //応募したプロジェクトを取得
+        $authUserId = Auth::user()->id;
+        if($id == $authUserId){
+            //応募したプロジェクトを取得
+            $entriedProjects = DB::select(DB::raw("SELECT `projects`.`title`
+                                                FROM `projects`
+                                                INNER JOIN `entries` ON `entries`.`user_id` = $authUserId
+                                                WHERE `entries`.`project_id` = `projects`.`id`
+                                                ORDER BY `entries`.`created_at` DESC"));
+        }
+
         $user = User::find($id);
-        $userPrefecture = Prefecture::where('code', $user->livein)->first();
-        return view('users.profile', compact('user', 'userPrefecture', 'authProjects'));
+        return view('users.profile', compact('user', 'authProjects', 'entriedProjects'));
     }
 
     public function edit()

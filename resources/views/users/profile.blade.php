@@ -25,19 +25,24 @@
                         <h4>性別</h4>
                         <p>{{$user->gender}}</p>
                     @endisset
-                    @isset($user->livein)
-                        <h4>居住地</h4>
-                        <p>{{$userPrefecture->name}}</p>
-                    @endisset
                     @isset($user->birthday)
                         <h4>生年月日</h4>
                         <p>{{$user->birthday}}</p>
                     @endisset
 
                     {{--募集したプロジェクトを表示--}}
+                        <h4>募集したプロジェクト</h4>
                         @isset($authProjects)
                             @foreach($authProjects as $authProject)
                                 <p>{{$authProject->title}}</p>
+                            @endforeach
+                        @endisset
+
+                        {{--応募したプロジェクトを表示--}}
+                        <h4>応募したプロジェクト</h4>
+                        @isset($entriedProjects)
+                            @foreach($entriedProjects as $entriedProject)
+                                <p>{{$entriedProject->title}}</p>
                             @endforeach
                         @endisset
 
