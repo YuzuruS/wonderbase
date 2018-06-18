@@ -22,6 +22,8 @@ Route::get('/projects/form', ['as' => 'projects.form', 'uses' => 'ProjectsContro
 Route::post('/projects/form/complete', 'ProjectsController@formComplete');
 Route::get('/projects/entry/{id}', ['as' => 'projects.entry', 'uses' => 'ProjectsController@entry']);
 Route::post('/projects/entry/complete', 'ProjectsController@entryComplete');
+Route::get('/projects/edit/{id}', ['as' => 'projects.edit', 'uses' => 'ProjectsController@edit']);
+Route::post('/projects/edit/complete', 'ProjectsController@editComplete');
 Route::get('/projects/{id}', ['as' => 'projects.detail', 'uses' => 'ProjectsController@detail']);
 
 Route::get('/users/edit', ['as' => 'users.edit', 'uses' => 'UsersController@edit']);

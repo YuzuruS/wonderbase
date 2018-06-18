@@ -66,7 +66,7 @@ class ProjectsController extends Controller
         $projects->category = $request->title;
         $projects->occupation = $request->title;
         $projects->description = $request->title;
-        $projects->is_published = false;
+        $projects->is_published = true;
         $projects->save();
         return redirect('/');
     }
@@ -86,5 +86,37 @@ class ProjectsController extends Controller
         $entry->message = $request->message;
         $entry->save();
         return redirect('/');
+    }
+
+    public function edit($id)
+    {
+        $project = Project::find($id);
+        return view('projects.edit', compact('project'));
+    }
+
+    public function editComplete(Request $request)
+    {
+        $this->validate($request,
+            [
+                'title' => 'required|min:10',
+                //main_imageは後ほど実装する
+                //'main_image' => 'required',
+                'summary' => 'required',
+                'category' => 'required',
+                'occupation' => 'required',
+                'description' => 'required',
+            ]);
+
+            $project = Project::find($request->id);
+            $project->user_id = Auth::user()->id;
+            $project->title = $request->title;
+            $project->main_image = $request->main_image;
+            $project->summary = $request->summary;
+            $project->category = $request->category;
+            $project->occupation = $request->occupation;
+            $project->description = $request->description;
+            $project->is_published = $request->is_published;
+            $project->save();
+            return redirect('projects/'.$project->id);
     }
 }
