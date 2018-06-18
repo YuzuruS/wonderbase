@@ -14,7 +14,7 @@ class ProjectsController extends Controller
 {
     public function index()
     {
-        $projects = DB::table('projects')->limit(3)->orderBy('id', 'desc')->get();
+        $projects = DB::table('projects')->limit(5)->where('is_published', '=', true)->orderBy('id', 'desc')->get();
         return view('projects.index')->with('projects', $projects);
     }
 
