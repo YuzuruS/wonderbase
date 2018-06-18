@@ -20,13 +20,12 @@ class UsersController extends Controller
         $authUserId = Auth::user()->id;
         if($id == $authUserId){
             //応募したプロジェクトを取得
-            $entriedProjects = DB::select(DB::raw("SELECT `projects`.`title`
+            $entriedProjects = DB::select(DB::raw("SELECT `projects`.`id`, `title`
                                                 FROM `projects`
                                                 INNER JOIN `entries` ON `entries`.`user_id` = $authUserId
                                                 WHERE `entries`.`project_id` = `projects`.`id`
                                                 ORDER BY `entries`.`created_at` DESC"));
         }
-
         $user = User::find($id);
         return view('users.profile', compact('user', 'authProjects', 'entriedProjects'));
     }

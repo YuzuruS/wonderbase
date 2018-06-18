@@ -6,7 +6,7 @@
             <div class="text-center">
                 <img src="{{ asset('images/users/no-profilepic.png') }}" class="profile-image" alt="プロフィール写真" width="100px">
 
-                @if($user->id === Auth::user()->id)
+                @if($user->id == Auth::user()->id)
                     <div>
                         {!! link_to('users/edit', 'プロフィールを編集する') !!}
                     </div>
@@ -34,7 +34,7 @@
                         <h4>募集したプロジェクト</h4>
                         @isset($authProjects)
                             @foreach($authProjects as $authProject)
-                                <p>{{$authProject->title}}</p>
+                                {!! link_to('projects/'.$authProject->id, $authProject->title) !!}
                             @endforeach
                         @endisset
 
@@ -42,7 +42,7 @@
                         <h4>応募したプロジェクト</h4>
                         @isset($entriedProjects)
                             @foreach($entriedProjects as $entriedProject)
-                                <p>{{$entriedProject->title}}</p>
+                                {!! link_to('projects/'.$entriedProject->id, $entriedProject->title) !!}
                             @endforeach
                         @endisset
 
