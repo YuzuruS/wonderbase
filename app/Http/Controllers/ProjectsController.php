@@ -26,9 +26,10 @@ class ProjectsController extends Controller
     public function detail($id)
     {
         $project = Project::find($id);
+        $projectUserId = $project->user_id;
         $authUserId = Auth::user()->id;
         $alreadyEntried = DB::table('entries')->where('user_id', $authUserId)->where('project_id', $project->id)->select('id')->orderBy('id', 'desc')->get();
-        return view('projects.detail', compact('project', 'alreadyEntried'));
+        return view('projects.detail', compact('project', 'projectUserId', 'authUserId', 'alreadyEntried'));
     }
 
     public function form()
