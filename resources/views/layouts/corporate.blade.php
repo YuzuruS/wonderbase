@@ -89,7 +89,7 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
-    <footer>
-        <p class="footer-font text-center">Copyright © 2018 Robal, Inc. All Rights Reserved.</p>
-    </footer>
+<footer>
+    <p class="footer-font text-center">Copyright © 2018 Robal, Inc. All Rights Reserved.</p>
+</footer>
 </html>
