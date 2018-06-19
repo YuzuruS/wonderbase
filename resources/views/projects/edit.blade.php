@@ -43,12 +43,12 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <div class="center-block">
-                            <h4>公開設定</h4>
-                            {!! Form::select('is_published', [0 => '非公開', 1 => '公開'], $project->is_published, ['class' => 'form-control']) !!}
-                        </div>
-                    </div>
+                    {{--<div class="form-group">--}}
+                        {{--<div class="center-block">--}}
+                            {{--<h4>公開設定</h4>--}}
+                            {{--{!! Form::select('is_published', [0 => '非公開', 1 => '公開'], $project->is_published, ['class' => 'form-control']) !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
                     <div class="form-group">
                         <div class="center-block">

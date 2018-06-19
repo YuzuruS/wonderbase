@@ -29,7 +29,15 @@ class ProjectsController extends Controller
         $projectUserId = $project->user_id;
         $authUserId = Auth::user()->id;
         $alreadyEntried = DB::table('entries')->where('user_id', $authUserId)->where('project_id', $project->id)->select('id')->orderBy('id', 'desc')->get();
-        return view('projects.detail', compact('project', 'projectUserId', 'authUserId', 'alreadyEntried'));
+        if ($project->user_id != Auth::user()->id) {
+            if ($project->is_published) {
+                return view('projects.detail', compact('project', 'projectUserId', 'authUserId', 'alreadyEntried'));
+            } else {
+                return redirect('/');
+            }
+        } else {
+            return view('projects.detail', compact('project', 'projectUserId', 'authUserId', 'alreadyEntried'));
+        }
     }
 
     public function form()
@@ -115,7 +123,7 @@ class ProjectsController extends Controller
             $project->category = $request->category;
             $project->occupation = $request->occupation;
             $project->description = $request->description;
-            $project->is_published = $request->is_published;
+//            $project->is_published = $request->is_published;
             $project->save();
             return redirect('projects/'.$project->id);
     }
