@@ -29,29 +29,25 @@ class ProjectsController extends Controller
         $projectUserId = $project->user_id;
         $authUserId = Auth::user()->id;
         $alreadyEntried = DB::table('entries')->where('user_id', $authUserId)->where('project_id', $project->id)->select('id')->orderBy('id', 'desc')->get();
-        if ($project->user_id != Auth::user()->id) {
-            if ($project->is_published) {
-                return view('projects.detail', compact('project', 'projectUserId', 'authUserId', 'alreadyEntried'));
-            } else {
-                return redirect('/');
-            }
-        } else {
+        if ($project->user_id == Auth::user()->id) {
             return view('projects.detail', compact('project', 'projectUserId', 'authUserId', 'alreadyEntried'));
         }
+        if ($project->is_published) {
+            return view('projects.detail', compact('project', 'projectUserId', 'authUserId', 'alreadyEntried'));
+        }
+        return redirect('/');
     }
 
     public function form()
     {
-        if(Auth::check()) {
-            $authUser = User::find(Auth::user()->id);
-            if(isset($authUser->user_type)) {
-                return view('projects.form');
-            } else {
-                return redirect('/users/user_information')->with('authUser', $authUser);
-            }
-        } else {
+        if(!Auth::check()) {
             return redirect('/login');
         }
+        $authUser = User::find(Auth::user()->id);
+        if(isset($authUser->user_type)) {
+            return view('projects.form');
+        }
+        return redirect('/users/user_information')->with('authUser', $authUser);
     }
 
     public function formComplete(Request $request)
